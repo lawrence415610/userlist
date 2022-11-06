@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Card from "./components/UI/Card";
+import UserInput from "./components/UserInput/UserInput";
+import UserList from "./components/UserList/UserList";
 
-function App() {
+const DUMMY = [
+  { name: "Max", age: 18 },
+  { name: "Leo", age: 13 },
+];
+
+const App = () => {
+  const [namelist, setNamelist] = useState(DUMMY);
+  const addPeople = (people) => {
+    setNamelist((prePeople) => {
+      const updatedPeople = [...prePeople];
+      updatedPeople.push(people);
+      return updatedPeople;
+    });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Card>
+      <UserInput onAddPeople={addPeople}></UserInput>
+      <UserList people={namelist}></UserList>
+    </Card>
   );
-}
+};
 
 export default App;

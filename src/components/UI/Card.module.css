@@ -1,0 +1,8 @@
+.card {
+  background-color: azure;
+  margin: 3rem auto;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 2rem;
+  min-width: 90%;
+}
